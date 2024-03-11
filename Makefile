@@ -35,7 +35,19 @@ FILES = ./ft_isalpha.c \
 		./ft_putendl_fd.c \
 		./ft_putnbr_fd.c
 
+BONUS = ./ft_lstnew \
+		./ft_lstadd_front \
+		./ft_lstsize \
+		./ft_lstlast \
+		./ft_lstadd_back \
+		./ft_lstdelone \
+		./ft_lstclear \
+		./ft_lstsiter \
+		./ft_lstmap
+
 OBJS = $(FILES:.c=.o)
+
+OBJS_B = $(BONUS:.c=.o)
 
 HEAD = libft.h
 
@@ -55,12 +67,15 @@ all:	$(NAME)
 $(NAME):    $(OBJS)
 	$(AR) $(NAME) $(OBJS)
 
+bonus:	$(NAME) $(OBJS_B)
+	$(AR) $(NAME) $(OBJS_B)
+
 clean:      
-	$(RM) $(OBJS)
+	$(RM) $(OBJS) $(OBJS_B)
 
 fclean:     clean
-	$(RM) $(NAME)
+	$(RM) $(NAME) $(bonus)
 
 re:	fclean all
 
-.PHONY:	all clean fclean re
+.PHONY:	all bonus clean fclean re
