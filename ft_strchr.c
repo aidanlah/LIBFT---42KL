@@ -12,16 +12,17 @@
 
 #include "libft.h"
 
-// type casted becuase return type is pointer to a char
+// type casted becuase return type char* not const char*
 char	*ft_strchr(const char *s, int c)
 {
-	while (*s)
+	int		i;
+
+	i = 0;
+	while (i < (int)ft_strlen(s) + 1)
 	{
-		if (*s == c)
-			return ((char *)s);
-		s ++;
+		if (*(s + i) == (char)c)
+			return ((char *)s + i);
+		i ++;
 	}
-	if (c == '\0')
-		return ((char *)s);
 	return (NULL);
 }
